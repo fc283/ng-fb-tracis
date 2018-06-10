@@ -22,7 +22,7 @@
 				"destination": "/index2.html"
 			},
 			{
-				"source": ["**"],
+				"source": "**",
 				"function": "ssr"
 			}
 		]
