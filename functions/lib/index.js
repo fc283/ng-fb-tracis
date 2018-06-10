@@ -16,7 +16,10 @@ app.get('**', (req, res) => {
         url: req.path,
         document: index
     })
-        .then(html => res.status(200).send(html))
+        .then(html => {
+        res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
+        res.status(200).send(html);
+    })
         .catch(err => console.log(err));
 });
 exports.ssr = functions.https.onRequest(app);
