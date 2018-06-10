@@ -11,8 +11,7 @@ before_script:
 script: 
   - ng build --prod 
   - ng run ssr:server 
-  - ls
-  - mv /functions/dist/browser/index.html /functions/dist/browser/index2.html
+  - mv /src/functions/dist/browser/index.html /src/functions/dist/browser/index2.html
   - firebase deploy --token 1/5lvwj8E2Hd_A-fwy6QkDx0AeveYgqwYe5kSH71b_Z75uEaa0Y9kXKShNew00lLxE
 
 cache:
