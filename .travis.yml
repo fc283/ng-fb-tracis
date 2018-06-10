@@ -6,7 +6,8 @@ script:
   - ng build --prod 
   - ng run ssr:server 
   - mv functions/dist/browser/index.html functions/dist/browser/index2.html
-  - firebase deploy
+  - cd functions
+  - npm run deploy
 
 cache:
   directories:
