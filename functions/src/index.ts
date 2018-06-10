@@ -16,12 +16,15 @@ const index = fs.readFileSync(path.resolve(__dirname, '../dist/browser/index2.ht
 const app = express();
 
 app.get('**', (req, res) => {
-  renderModuleFactory(AppServerModuleNgFactory, {
-    url: req.path,
-    document: index
-  })
-  .then(html => res.status(200).send(html))
-  .catch(err => console.log(err));
+	renderModuleFactory(AppServerModuleNgFactory, {
+		url: req.path,
+		document: index
+	})
+		.then(html => {
+			res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
+			res.status(200).send(html);
+		})
+		.catch(err => console.log(err));
 });
 
 export const ssr = functions.https.onRequest(app);
