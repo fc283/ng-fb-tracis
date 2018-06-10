@@ -2,10 +2,11 @@ language: node_js
 node_js:
   - "10"
 
-os: windows
-
 script: 
-  - npm run deploy
+  - ng build --prod 
+  - ng run ssr:server 
+  - mv functions/dist/browser/index.html functions/dist/browser/index2.html
+  - firebase deploy
 
 cache:
   directories:
