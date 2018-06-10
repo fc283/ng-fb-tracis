@@ -2,12 +2,14 @@ language: node_js
 node_js:
   - "10"
 
+before_script:
+  - npm install -g firebase-tools
+
 script: 
   - ng build --prod 
   - ng run ssr:server 
   - mv functions/dist/browser/index.html functions/dist/browser/index2.html
-  - cd functions
-  - npm run deploy
+  - firebase deploy --token 1/5lvwj8E2Hd_A-fwy6QkDx0AeveYgqwYe5kSH71b_Z75uEaa0Y9kXKShNew00lLxE
 
 cache:
   directories:
